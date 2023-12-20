@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>Can They Win?</title>
+</head>
+<body>
+
+    <div>
+        <div class="d-flex justify-content-center pb-4">
+            <h1>League Register</h1>
+        </div>
+        <div class="container-md text-center content rounded shadow p-1">
+        <p>
+            This is the site for team and player registration. Please enter your team information and register your players to your team.
+        </p>
+        </div>
+    </div><br>
+
+    <div class="container-md rounded content shadow p-4">
+        <form>
+            <div class="container-sm row">
+                <div class="col-8">
+                    <label for="teamName" class="pb-1">Team Name</label>
+                    <input id="teamName" type="text" placeholder="Team Name" class="form-control">
+                </div>
+                <div class="col-4 align-center">
+                    <label for="Conference" class="pb-1">Conference</label><br>
+                    <input type="radio" name="Conference" id="eastConf" value="Eastern Conference" class="form-check-input">
+                    <label for="eastConf">Eastern Conference</label><br>
+                    <input type="radio" name="Conference" id="westConf" value="Western Conference" class="form-check-input">
+                    <label for="eastConf">Western Conference</label><br>  
+                </div>
+                <br>
+            </div>
+            <div>
+                <div class="col-md-4 ms-3">
+                    <label for="coach" class="pb-1">Coach</label>
+                    <input id="coach" type="text" placeholder="Coach" class="form-control">
+            </div>
+            <br>
+           <button id="sub" type="submit" class="btn btn-dark ms-3">Create Team</button> 
+        </form>
+    </div>
+
+<div class="container-md content rounded shadow p-4">
+    <table>
+        <thead>
+            <tr>
+            <th>Team</th>
+            <th>Conference</th>
+            <th>Coach</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+
+    
+
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>
