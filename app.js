@@ -1,13 +1,16 @@
 const MOCKAPI_TEAMS = "https://658125763dfdd1b11c427f36.mockapi.io/teams"
 
-$("sub").click(() => {
-$.post(MOCKAPI_SRV,
+$("sub").on('click', () => {
+$.post(MOCKAPI_TEAMS,
     {
-        name: $("teamName").value,
-        conference: $("conference").value,
-        coach: $("coach").value  
-    })
+        name: $("#teamName").val(),
+        conference: $("#conference").val(),
+        coach: $("#coach").val()  
+    }, 
+    populateTable)
 })
 
-
+function populateTable() {
+    $('#')
+}
 
