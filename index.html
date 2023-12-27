@@ -25,13 +25,13 @@
             <div class="container-sm row">
                 <div class="col-8">
                     <label for="teamName" class="pb-1">Team Name</label>
-                    <input id="teamName" type="text" placeholder="Team Name" class="form-control">
+                    <input id="teamName" type="text" placeholder="Team Name" class="form-control" required>
                 </div>
                 <div class="col-4 align-center">
-                    <label for="Conference" class="pb-1">Conference</label><br>
-                    <input type="radio" name="Conference" id="eastConf" value="Eastern Conference" class="form-check-input">
+                    <label for="conference" class="pb-1">Conference</label><br>
+                    <input type="radio" name="conference" id="eastConf" value="Eastern" class="form-check-input">
                     <label for="eastConf">Eastern Conference</label><br>
-                    <input type="radio" name="Conference" id="westConf" value="Western Conference" class="form-check-input">
+                    <input type="radio" name="conference" id="westConf" value="Western" class="form-check-input">
                     <label for="eastConf">Western Conference</label><br>  
                 </div>
                 <br>
@@ -39,7 +39,7 @@
             <div>
                 <div class="col-md-4 ms-3">
                     <label for="coach" class="pb-1">Coach</label>
-                    <input id="coach" type="text" placeholder="Coach" class="form-control">
+                    <input id="coach" type="text" placeholder="Coach" class="form-control" required>
             </div>
             <br>
            <button id="sub" type="submit" class="btn btn-dark ms-3">Create Team</button> 
@@ -53,13 +53,52 @@
             <th>Team</th>
             <th>Conference</th>
             <th>Coach</th>
+            <th></th>
+            <th></th>
             </tr>
         </thead>
-        <tbody>
-
+        <tbody id="body">
+            
         </tbody>
     </table>
 </div>
+
+<div class="modal fade" id="edtModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Team</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="container-sm row">
+                    <div class="col-8">
+                        <label for="edtTeamName" class="pb-1">Team Name</label>
+                        <input id="edtTeamName" type="text" placeholder="Team Name" class="form-control">
+                    </div>
+                    <div class="col-4 align-center">
+                        <label for="conference" class="pb-1">Conference</label><br>
+                        <input type="radio" name="edtConference" id="eastConf" value="Eastern" class="form-check-input">
+                        <label for="eastConf">Eastern Conference</label><br>
+                        <input type="radio" name="edtConference" id="westConf" value="Western" class="form-check-input">
+                        <label for="eastConf">Western Conference</label><br>  
+                    </div>
+                    <br>
+                </div>
+                <div>
+                    <div class="col-md-4 ms-3">
+                        <label for="edtCoach" class="pb-1">Coach</label>
+                        <input id="edtCoach" type="text" placeholder="Coach" class="form-control">
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button id="edtSub" type="submit" class="btn btn-primary">Save changes</button>
+        </div>
+    </form>
+        </div>
+    </div>
+    </div>
 
 
     
