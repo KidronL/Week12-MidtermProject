@@ -39,9 +39,7 @@ const deleteTeam = (id) => {
 }
 
 const edtSubBtn = () => {
-    $('.modal-footer').append(`
-        <button id="edtSub${team.id}" type="submit" class="btn btn-primary">Save changes</button>
-        `)
+
 }
 
 const editTeam = (id) => {
@@ -79,8 +77,13 @@ const showTeams = () => {
             <td><button class="btn btn-danger" id="del${team.id}">Delete</button></td>
             <td><button class="btn btn-primary" id="edt${team.id}" data-bs-toggle="modal" data-bs-target="#edtModal">Edit</button></td>
         `)
+
+        $('.modal-footer').append(`
+        <button id="edtSub${team.id}" type="submit" class="btn btn-primary">Save changes</button>
+        `)
+        
         $(`#del${team.id}`).click(() => deleteTeam(team.id));
-        $(`#edtSub${team.id}`).click(() => editTeam(team.id); edtSubBtn());
+        $(`edtSub${team.id}`).click(() => editTeam(team.id));
 
     }
    })
