@@ -1,15 +1,17 @@
+//Declaring variable for API
 const MOCKAPI_URL = "https://658125763dfdd1b11c427f36.mockapi.io"
 
+//Setting up the the function that interacts with the DOM
 $(document).ready(function() {
 
+    //AJAX function in order to get the teams from the database
    const getTeams = () => {
     return $.get(`${MOCKAPI_URL}/teams`)
    }
 
-
-
+//Function to create the team and post it to the database
 const createTeam = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     const team = {
         name: $('#teamName').val(),
@@ -21,7 +23,7 @@ const createTeam = (e) => {
         type: 'POST',
         url: `${MOCKAPI_URL}/teams`,
         data: team,
-        dataType: 'application/json',
+        dataType: 'json',
         success: getTeams().done(showTeams),
     })
 
@@ -30,6 +32,7 @@ const createTeam = (e) => {
     $('#coach').val('');
 }
 
+//Function to delete teams
 const deleteTeam = (id) => {
     $.ajax({
         type: 'DELETE',
@@ -38,33 +41,20 @@ const deleteTeam = (id) => {
     })
 }
 
-const edtSubBtn = () => {
-
-}
-
-const editTeam = (id) => {
-    e.preventDefault();
-
-    editSubButton();
-        
-
-                const editTeams = {
-                    name: $('#edtTeamName').val(),
-                    conference: $(`input[name='edtConference']:checked`).val(),
-                    coach: $('#edtCoach').val(),
-                }
-
+//function to update teams in the database
+const editTeam = (id, editTeams) => {   
     
                 $.ajax({
                     type: 'PUT', 
                     url: `${MOCKAPI_URL}/teams/${id}`,
                     data: editTeams,
-                    dataType: 'application/json',
+                    dataType: 'json',
                     success: getTeams().done(showTeams)
+
 })
             }
 
-
+//Function to show teams on the page
 const showTeams = () => {
    getTeams().then((teams) => {
     $('#body').empty();
@@ -75,16 +65,30 @@ const showTeams = () => {
             <td>${team.conference}</td>
             <td>${team.coach}</td>
             <td><button class="btn btn-danger" id="del${team.id}">Delete</button></td>
-            <td><button class="btn btn-primary" id="edt${team.id}" data-bs-toggle="modal" data-bs-target="#edtModal">Edit</button></td>
+            <td><button class="btn btn-primary edit" id="${team.id}" data-bs-toggle="modal" data-bs-target="#edtModal">Edit</button></td>
         `)
 
-        $('.modal-footer').append(`
-        <button id="edtSub${team.id}" type="submit" class="btn btn-primary">Save changes</button>
-        `)
         
+       //Creating the delete and edit button in order to interact directly with functions 
         $(`#del${team.id}`).click(() => deleteTeam(team.id));
-        $(`edtSub${team.id}`).click(() => editTeam(team.id));
+        $(`.edit`).click((event) => {
+            const id = $((event.currentTarget)).attr('id');
+            console.log(id);
+            $('#edtSub').one('click', (e) => {
+                e.preventDefault();
 
+                const editTeams = {
+                    id: id,
+                    name: $('#edtTeamName').val(),
+                    conference: $(`input[name='edtConference']:checked`).val(),
+                    coach: $('#edtCoach').val(),
+                };
+
+                editTeam(id, editTeams);
+            });  
+        });
+
+ 
     }
    })
 }
@@ -95,6 +99,7 @@ const showTeams = () => {
 
 $('#sub').click(createTeam);
 
+//calling the function to show teams on the page
 showTeams();
 
 })
